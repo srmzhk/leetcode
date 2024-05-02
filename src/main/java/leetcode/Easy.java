@@ -142,4 +142,25 @@ public class Easy {
         }
         return k;
     }
+
+    // 28. Find the Index of the First Occurrence in a String
+    public int strStr(String haystack, String needle) {
+        if (needle.length() > haystack.length())
+            return -1;
+        for (int i = 0; i < haystack.length(); i++) {
+            boolean isFind = true;
+            for (int j = 0; j < needle.length(); j++) {
+                if(haystack.length() - i < needle.length())
+                    return -1;
+                else if (needle.charAt(j) != haystack.charAt(i + j)) {
+                    isFind = false;
+                    break;
+                }
+
+            }
+            if (isFind)
+                return i;
+        }
+        return -1;
+    }
 }
