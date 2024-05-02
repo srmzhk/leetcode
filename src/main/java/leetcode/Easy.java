@@ -144,7 +144,7 @@ public class Easy {
     }
 
     // 28. Find the Index of the First Occurrence in a String
-    public int strStr(String haystack, String needle) {
+    public static int strStr(String haystack, String needle) {
         if (needle.length() > haystack.length())
             return -1;
         for (int i = 0; i < haystack.length(); i++) {
@@ -163,4 +163,26 @@ public class Easy {
         }
         return -1;
     }
+
+    // 35. Search Insert Position
+    public static int searchInsert(int[] nums, int target) {
+        return binarySearch(nums, target, 0, nums.length);
+    }
+    public static int binarySearch(int[] sortedArray, int key, int low, int high) {
+        int middle = low  + ((high - low) / 2);
+
+        if (high < low) {
+            return high;
+        }
+
+        if (key == sortedArray[middle]) {
+            return middle;
+        } else if (key < sortedArray[middle]) {
+            return binarySearch(sortedArray, key, low, middle - 1);
+        } else {
+            return binarySearch(sortedArray, key, middle + 1, high);
+        }
+    }
+
+
 }
