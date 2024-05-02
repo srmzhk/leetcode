@@ -1,5 +1,7 @@
 package leetcode;
 
+import sun.jvm.hotspot.debugger.linux.x86.LinuxX86CFrame;
+
 import java.io.Console;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -184,5 +186,18 @@ public class Easy {
         }
     }
 
-
+    // 58. Length of Last Word
+    public static int lengthOfLastWord(String s) {
+        s = s.trim();
+        if (!s.contains(" "))
+            return s.length();
+        else {
+            int index = 0;
+            while(true) {
+                if (s.charAt(s.length() - 1 - index) == ' ')
+                    return index;
+                index++;
+            }
+        }
+    }
 }
