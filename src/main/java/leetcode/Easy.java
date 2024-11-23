@@ -97,18 +97,7 @@ public class Easy {
 
     // 20. Valid Parentheses
     public static boolean isValid(String s) {
-        if (s.length() < 2)
-            return false;
-        while (true) {
-            if (s.contains("[]"))
-                s = s.replace("[]", "");
-            else if (s.contains("{}"))
-                s = s.replace("{}", "");
-            else if (s.contains("()"))
-                s = s.replace("()", "");
-            else
-                return s.isEmpty();
-        }
+        return true;
     }
     public static boolean isValidWithStack (String s) {
         if(s.length() < 2)
