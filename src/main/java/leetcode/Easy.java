@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.sql.Array;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 import java.util.HashMap;
@@ -7,8 +8,8 @@ import java.util.Stack;
 
 public class Easy {
     public static void main(String[] args){
-        String str = "()";
-        System.out.println(isValidWithStack(str));
+        int[] nums = new int[]{1,1,2};
+        System.out.println(removeDuplicates(nums));
     }
 
     // 1. Two Sum
@@ -143,7 +144,7 @@ public class Easy {
     }
 
     //21. Merge Two Sorted Lists
-     public class ListNode {
+    public class ListNode {
          int val;
          ListNode next;
          ListNode() {}
@@ -170,6 +171,15 @@ public class Easy {
         return head.next;
     }
 
+    //26. Remove Duplicates from Sorted Array
+    public static int removeDuplicates(int[] nums) {
+        int k = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[k] != nums[i])
+                nums[++k] = nums[i];
+        }
+        return ++k;
+    }
 
     // 27. Remove Element
     public static int removeElement(int[] nums, int val) {
