@@ -8,8 +8,8 @@ import java.util.Stack;
 
 public class Easy {
     public static void main(String[] args){
-        int[] nums = new int[]{1,1,2};
-        System.out.println(removeDuplicates(nums));
+        int[] nums = new int[]{3,2,2,3};
+        System.out.println(removeElement(nums, 3));
     }
 
     // 1. Two Sum
@@ -181,9 +181,14 @@ public class Easy {
         return ++k;
     }
 
-    // 27. Remove Element
+    //27. Remove Element
     public static int removeElement(int[] nums, int val) {
-        return 1;
+        int k = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val)
+                nums[k++] = nums[i];
+        }
+        return k;
     }
 
     // 28. Find the Index of the First Occurrence in a String
