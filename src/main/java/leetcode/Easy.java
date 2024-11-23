@@ -1,15 +1,13 @@
 package leetcode;
 
-import sun.jvm.hotspot.debugger.linux.x86.LinuxX86CFrame;
-
-import java.io.Console;
 import java.util.Arrays;
+import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.Stack;
 
 public class Easy {
     public static void main(String[] args){
-        String str = "{}{[]}()";
+        String str = "()";
         System.out.println(isValidWithStack(str));
     }
 
@@ -97,28 +95,50 @@ public class Easy {
 
     // 20. Valid Parentheses
     public static boolean isValid(String s) {
-        return true;
-    }
-    public static boolean isValidWithStack (String s) {
-        if(s.length() < 2)
-            return false;
-        Stack<Character> stack = new Stack<>();
-        for(Character c : s.toCharArray()){
-            switch (c) {
-                case '{':
-                    stack.push('}');
-                    break;
-                case '[':
-                    stack.push(']');
-                    break;
-                case '(':
-                    stack.push(')');
-                    break;
-                default:
-                    if(stack.isEmpty() || stack.pop() != c)
-                        return false;
+        while (true) {
+            if (s.contains("()")) {
+                s = s.replace("()", "");
+            }
+            else if (s.contains("{}")) {
+                s = s.replace("{}", "");
+            }
+            else if (s.contains("[]")) {
+                s = s.replace("[]", "");
+            }
+            else {
+                return s.isEmpty();
             }
         }
+    }
+    public static boolean isValidWithStack (String s) {
+        if (s.length() % 2 != 0)
+            return false;
+
+        Stack<Character> stack = new Stack<>();
+        try {
+            for (char c : s.toCharArray()) {
+                switch (c){
+                    case ')':
+                        if (stack.pop() != '(')
+                            return false;
+                        break;
+                    case '}':
+                        if (stack.pop() != '{')
+                            return false;
+                        break;
+                    case ']':
+                        if (stack.pop() != '[')
+                            return false;
+                        break;
+                    default:
+                        stack.push(c);
+                        break;
+                }
+            }
+        } catch (EmptyStackException e) {
+            return false;
+        }
+
         return stack.isEmpty();
     }
 
